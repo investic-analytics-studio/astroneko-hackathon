@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+#root {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: #111827; /* dark gray-900 */
+}
+
+/* Add smooth scrolling to the entire document */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Make the app take full width on mobile */
+@media (max-width: 768px) {
+  #root {
+    max-width: 100%;
+    padding: 0;
+  }
+}
+
+
+.page-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  will-change: transform, opacity, background-color;
+  backdrop-filter: blur(0px);
+  transition: backdrop-filter 0.8s ease-in-out;
+}
+
+/* Ensure content doesn't flash during transitions */
+.page-wrapper > * {
+  height: 100%;
+}
+
+/* Add backdrop blur effect during transitions */
+.page-wrapper[data-state="entering"],
+.page-wrapper[data-state="exiting"] {
+  backdrop-filter: blur(2px);
+}

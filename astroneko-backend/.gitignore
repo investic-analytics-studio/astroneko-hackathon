@@ -1,0 +1,9 @@
+# Ignore configs
+configs/local-config.yml
+configs/prod-config.yml
+configs/prod-config-copy.yml
+
+# sonar
+sonar-project.properties
+.sonar_lock
+report-task.txt

@@ -1,0 +1,33 @@
+app:
+  env: local
+  debug: true
+  port: 9082
+  jwt: YOUR_JWT_SECRET
+  project: medeze-backend
+postgres:
+  instance_connection_name: project-id:asia-southeast1:testdb
+  host: localhost
+  port: 5432
+  username: postgres
+  password: password
+  database: postgres
+  sslmode: false
+firebase:
+  credential: |
+    {
+      "type": "",
+      "project_id": "",
+      "private_key_id": "",
+      "private_key": "",
+      "client_email": "",
+      "client_id": "",
+      "auth_uri": "",
+      "token_uri": "",
+      "auth_provider_x509_cert_url": "",
+      "client_x509_cert_url": "",
+      "universe_domain": ""
+    }
+  web_api_key: YOUR_FIREBASE_WEB_API_KEY
+external_url:
+  astroneko_url: YOUR_ASTRONEKO_URL
+  token: YOUR_TOKEN

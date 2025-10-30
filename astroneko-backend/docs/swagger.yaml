@@ -1,0 +1,2084 @@
+basePath: /
+definitions:
+  agent.ClearStateRequest:
+    properties:
+      session_id:
+        type: string
+    type: object
+  agent.ClearStateResponse:
+    properties:
+      status:
+        type: string
+    type: object
+  agent.ReplyRequest:
+    properties:
+      session_id:
+        type: string
+      text:
+        type: string
+      user_id:
+        type: string
+    required:
+    - text
+    type: object
+  agent.ReplyResponse:
+    properties:
+      card:
+        type: string
+      meaning:
+        type: string
+      message:
+        type: string
+      session_id:
+        type: string
+      status:
+        type: string
+    type: object
+  astro_boxing_waiting_list.AstroBoxingWaitingListUserResponse:
+    properties:
+      created_at:
+        type: string
+      email:
+        type: string
+      id:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  astro_boxing_waiting_list.IsInAstroBoxingWaitingListResponse:
+    properties:
+      is_in_waiting_list:
+        type: boolean
+    type: object
+  astro_boxing_waiting_list.JoinAstroBoxingWaitingListRequest:
+    properties:
+      email:
+        type: string
+    required:
+    - email
+    type: object
+  astro_boxing_waiting_list.JoinAstroBoxingWaitingListResponse:
+    properties:
+      currentPage:
+        type: integer
+      data: {}
+      latestAiSuggestQuestions:
+        items:
+          type: string
+        type: array
+      meta:
+        additionalProperties: true
+        type: object
+      perPage:
+        type: integer
+      status:
+        $ref: '#/definitions/shared.Status'
+      totalItem:
+        type: integer
+    type: object
+  crm_user.CRMLoginRequest:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    required:
+    - password
+    - username
+    type: object
+  crm_user.CRMLoginResponse:
+    properties:
+      token:
+        type: string
+      user:
+        $ref: '#/definitions/crm_user.CRMUserResponse'
+    type: object
+  crm_user.CRMUserResponse:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: string
+      updated_at:
+        type: string
+      username:
+        type: string
+    type: object
+  crm_user.CreateCRMUserRequest:
+    properties:
+      password:
+        minLength: 8
+        type: string
+      username:
+        maxLength: 50
+        minLength: 3
+        type: string
+    required:
+    - password
+    - username
+    type: object
+  handlers.HealthResponse:
+    properties:
+      message:
+        type: string
+      service:
+        type: string
+      status:
+        type: string
+      timestamp:
+        type: string
+      user:
+        $ref: '#/definitions/user.UserResponse'
+    type: object
+  handlers.SimpleHealthResponse:
+    properties:
+      status:
+        type: string
+    type: object
+  history.GetMessagesResponse:
+    properties:
+      history_name:
+        type: string
+      messages:
+        items:
+          $ref: '#/definitions/history.MessageDetail'
+        type: array
+      session_id:
+        type: string
+      total:
+        type: integer
+    type: object
+  history.GetSessionsResponse:
+    properties:
+      sessions:
+        items:
+          $ref: '#/definitions/history.SessionSummary'
+        type: array
+      total:
+        type: integer
+    type: object
+  history.MessageDetail:
+    properties:
+      card:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: string
+      meaning:
+        type: string
+      message:
+        type: string
+      role:
+        type: string
+      used_tokens:
+        type: integer
+    type: object
+  history.SessionSummary:
+    properties:
+      created_at:
+        type: string
+      history_name:
+        type: string
+      session_id:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  referral_code.ActivateReferralRequest:
+    properties:
+      referral_code:
+        type: string
+    required:
+    - referral_code
+    type: object
+  referral_code.ActivateReferralResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  referral_code.CreateReferralCodeRequest:
+    properties:
+      referral_code:
+        type: string
+    required:
+    - referral_code
+    type: object
+  referral_code.GetUserReferralCodesResponse:
+    properties:
+      codes:
+        items:
+          $ref: '#/definitions/referral_code.UserReferralCodeResponse'
+        type: array
+    type: object
+  referral_code.ListReferralCodesResponse:
+    properties:
+      codes:
+        items:
+          $ref: '#/definitions/referral_code.ReferralCodeResponse'
+        type: array
+      limit:
+        type: integer
+      offset:
+        type: integer
+      total:
+        type: integer
+    type: object
+  referral_code.ReferralCodeResponse:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: string
+      referral_code:
+        type: string
+      updated_at:
+        type: string
+      used_count:
+        type: integer
+    type: object
+  referral_code.UpdateReferralCodeRequest:
+    properties:
+      referral_code:
+        type: string
+    required:
+    - referral_code
+    type: object
+  referral_code.UserReferralCodeResponse:
+    properties:
+      id:
+        type: string
+      is_activated:
+        type: boolean
+      referral_code:
+        type: string
+    type: object
+  shared.ResponseBody:
+    properties:
+      currentPage:
+        type: integer
+      data: {}
+      latestAiSuggestQuestions:
+        items:
+          type: string
+        type: array
+      meta:
+        additionalProperties: true
+        type: object
+      perPage:
+        type: integer
+      status:
+        $ref: '#/definitions/shared.Status'
+      totalItem:
+        type: integer
+    type: object
+  shared.Status:
+    properties:
+      code:
+        type: string
+      errorID:
+        type: string
+      message:
+        items:
+          type: string
+        type: array
+      successID:
+        type: string
+    type: object
+  user.ActivateReferralRequest:
+    properties:
+      referral_code:
+        type: string
+    required:
+    - referral_code
+    type: object
+  user.ActivateReferralResponse:
+    properties:
+      currentPage:
+        type: integer
+      data: {}
+      latestAiSuggestQuestions:
+        items:
+          type: string
+        type: array
+      meta:
+        additionalProperties: true
+        type: object
+      perPage:
+        type: integer
+      status:
+        $ref: '#/definitions/shared.Status'
+      totalItem:
+        type: integer
+    type: object
+  user.AuthResponse:
+    properties:
+      access_token:
+        type: string
+      expires_in:
+        type: integer
+      refresh_token:
+        type: string
+      user:
+        $ref: '#/definitions/user.UserResponse'
+    type: object
+  user.CreateUserRequest:
+    properties:
+      email:
+        type: string
+      password:
+        minLength: 6
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  user.CreateUserResponse:
+    properties:
+      currentPage:
+        type: integer
+      data: {}
+      latestAiSuggestQuestions:
+        items:
+          type: string
+        type: array
+      meta:
+        additionalProperties: true
+        type: object
+      perPage:
+        type: integer
+      status:
+        $ref: '#/definitions/shared.Status'
+      totalItem:
+        type: integer
+    type: object
+  user.DeleteUserResponse:
+    properties:
+      currentPage:
+        type: integer
+      data: {}
+      latestAiSuggestQuestions:
+        items:
+          type: string
+        type: array
+      meta:
+        additionalProperties: true
+        type: object
+      perPage:
+        type: integer
+      status:
+        $ref: '#/definitions/shared.Status'
+      totalItem:
+        type: integer
+    type: object
+  user.GetTotalUsersResponse:
+    properties:
+      total_users:
+        type: integer
+    type: object
+  user.GetUserResponse:
+    properties:
+      currentPage:
+        type: integer
+      data: {}
+      latestAiSuggestQuestions:
+        items:
+          type: string
+        type: array
+      meta:
+        additionalProperties: true
+        type: object
+      perPage:
+        type: integer
+      status:
+        $ref: '#/definitions/shared.Status'
+      totalItem:
+        type: integer
+    type: object
+  user.GoogleLoginRequest:
+    properties:
+      id_token:
+        type: string
+      refresh_token:
+        type: string
+    required:
+    - id_token
+    type: object
+  user.LoginRequest:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  user.RefreshTokenRequest:
+    properties:
+      refresh_token:
+        type: string
+    required:
+    - refresh_token
+    type: object
+  user.RefreshTokenResponse:
+    properties:
+      currentPage:
+        type: integer
+      data: {}
+      latestAiSuggestQuestions:
+        items:
+          type: string
+        type: array
+      meta:
+        additionalProperties: true
+        type: object
+      perPage:
+        type: integer
+      status:
+        $ref: '#/definitions/shared.Status'
+      totalItem:
+        type: integer
+    type: object
+  user.UpdateUserRequest:
+    properties:
+      display_name:
+        type: string
+      is_activated_referral:
+        type: boolean
+      latest_login_at:
+        type: string
+      profile_image_url:
+        type: string
+    type: object
+  user.UpdateUserResponse:
+    properties:
+      currentPage:
+        type: integer
+      data: {}
+      latestAiSuggestQuestions:
+        items:
+          type: string
+        type: array
+      meta:
+        additionalProperties: true
+        type: object
+      perPage:
+        type: integer
+      status:
+        $ref: '#/definitions/shared.Status'
+      totalItem:
+        type: integer
+    type: object
+  user.UserResponse:
+    properties:
+      created_at:
+        type: string
+      display_name:
+        type: string
+      email:
+        type: string
+      firebase_uid:
+        type: string
+      id:
+        type: string
+      is_activated_referral:
+        type: boolean
+      latest_login_at:
+        type: string
+      profile_image_url:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  user_limit.GetUserLimitResponse:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: string
+      limit:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  user_limit.IsUserOverLimitUsedResponse:
+    properties:
+      is_over_limit:
+        type: boolean
+    type: object
+  user_limit.UpdateUserLimitRequest:
+    properties:
+      limit:
+        minimum: 300
+        type: integer
+    required:
+    - limit
+    type: object
+  user_limit.UpdateUserLimitResponse:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: string
+      limit:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  waiting_list.CheckWaitingListRequest:
+    properties:
+      email:
+        type: string
+    required:
+    - email
+    type: object
+  waiting_list.IsInWaitingListResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  waiting_list.JoinWaitingListRequest:
+    properties:
+      email:
+        type: string
+    required:
+    - email
+    type: object
+  waiting_list.JoinWaitingListResponse:
+    properties:
+      currentPage:
+        type: integer
+      data: {}
+      latestAiSuggestQuestions:
+        items:
+          type: string
+        type: array
+      meta:
+        additionalProperties: true
+        type: object
+      perPage:
+        type: integer
+      status:
+        $ref: '#/definitions/shared.Status'
+      totalItem:
+        type: integer
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: REST API for Astroneko Backend
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Astroneko Backend API
+  version: "1.0"
+paths:
+  /health:
+    get:
+      consumes:
+      - application/json
+      description: Simple health check that returns basic status
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.SimpleHealthResponse'
+      summary: Simple health check endpoint
+      tags:
+      - health
+  /health-check:
+    get:
+      consumes:
+      - application/json
+      description: Check if the API is healthy and running, shows authenticated user
+        if token provided
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.HealthResponse'
+      security:
+      - BearerAuth: []
+      summary: Health check endpoint
+      tags:
+      - health
+  /v1/api/agent/clear-state:
+    post:
+      consumes:
+      - application/json
+      description: Clear the conversation state for the cat fortune agent
+      parameters:
+      - description: Clear state request (user_id will be set from auth)
+        in: body
+        name: clear_state
+        schema:
+          $ref: '#/definitions/agent.ClearStateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/agent.ClearStateResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      security:
+      - BearerAuth: []
+      summary: Clear agent state for authenticated user
+      tags:
+      - agent
+  /v1/api/agent/reply:
+    post:
+      consumes:
+      - application/json
+      description: Send a message to the cat fortune agent and receive a response.
+        Works for both authenticated users (unlimited) and guests (3 requests/day).
+        For authenticated users, user_id is automatically extracted from auth token.
+        For guests, session fingerprint is used. session_id is optional.
+      parameters:
+      - description: Message to send to agent (session_id is optional)
+        in: body
+        name: reply
+        required: true
+        schema:
+          $ref: '#/definitions/agent.ReplyRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/agent.ReplyResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "429":
+          description: Rate limit exceeded for guest users
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      security:
+      - BearerAuth: []
+      summary: Send message to agent and get reply
+      tags:
+      - agent
+  /v1/api/astro-boxing-waiting-list/check:
+    get:
+      consumes:
+      - application/json
+      description: Check if an email exists in the astro boxing waiting list
+      parameters:
+      - description: Email to check
+        in: query
+        name: email
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/astro_boxing_waiting_list.IsInAstroBoxingWaitingListResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Check if email is in astro boxing waiting list
+      tags:
+      - astro_boxing_waiting_list
+  /v1/api/astro-boxing-waiting-list/join:
+    post:
+      consumes:
+      - application/json
+      description: Add user to the astro boxing waiting list
+      parameters:
+      - description: Join request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/astro_boxing_waiting_list.JoinAstroBoxingWaitingListRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/astro_boxing_waiting_list.JoinAstroBoxingWaitingListResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Join astro boxing waiting list
+      tags:
+      - astro_boxing_waiting_list
+  /v1/api/astro-boxing-waiting-list/users:
+    get:
+      consumes:
+      - application/json
+      description: Get paginated list of astro boxing waiting list users
+      parameters:
+      - default: 10
+        description: Limit
+        in: query
+        name: limit
+        type: integer
+      - default: 0
+        description: Offset
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/astro_boxing_waiting_list.AstroBoxingWaitingListUserResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Get astro boxing waiting list users
+      tags:
+      - astro_boxing_waiting_list
+  /v1/api/astro-boxing-waiting-list/users/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a user from astro boxing waiting list by ID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Delete astro boxing waiting list user
+      tags:
+      - astro_boxing_waiting_list
+  /v1/api/auth/firebase:
+    post:
+      consumes:
+      - application/json
+      description: Verify Firebase ID token and return user info (simplified endpoint)
+      parameters:
+      - description: Bearer {firebase_id_token}
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.GetUserResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Authenticate with Firebase token
+      tags:
+      - auth
+  /v1/api/auth/google:
+    post:
+      consumes:
+      - application/json
+      description: Register new user or login existing user with Google ID token (Firebase
+        user creation handled in frontend)
+      parameters:
+      - description: Google authentication tokens
+        in: body
+        name: google_auth
+        required: true
+        schema:
+          $ref: '#/definitions/user.GoogleLoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.RefreshTokenResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Authenticate with Google OAuth
+      tags:
+      - auth
+  /v1/api/auth/login:
+    post:
+      consumes:
+      - application/json
+      description: Authenticate user with email and password, check both database
+        and Firebase
+      parameters:
+      - description: Login credentials
+        in: body
+        name: login
+        required: true
+        schema:
+          $ref: '#/definitions/user.LoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.RefreshTokenResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Login with email and password
+      tags:
+      - auth
+  /v1/api/auth/logout:
+    post:
+      consumes:
+      - application/json
+      description: Logout user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Logout user
+      tags:
+      - auth
+  /v1/api/auth/me:
+    get:
+      consumes:
+      - application/json
+      description: Get current authenticated user information from JWT token
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.GetUserResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      security:
+      - BearerAuth: []
+      summary: Get current user information
+      tags:
+      - auth
+  /v1/api/auth/referral/activate:
+    post:
+      consumes:
+      - application/json
+      description: Activate referral code with improved validation and logging. Sets
+        is_activated_referral = true in user table. Returns error if user has already
+        activated a referral code.
+      parameters:
+      - description: Referral code
+        in: body
+        name: referral
+        required: true
+        schema:
+          $ref: '#/definitions/referral_code.ActivateReferralRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/referral_code.ActivateReferralResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      security:
+      - BearerAuth: []
+      summary: Activate referral code for authenticated user
+      tags:
+      - referral
+  /v1/api/auth/referral/codes:
+    get:
+      consumes:
+      - application/json
+      description: Get or generate user referral codes (5 codes with 8 characters
+        each). Requires user to have is_activated_referral = true
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/referral_code.GetUserReferralCodesResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      security:
+      - BearerAuth: []
+      summary: Get user referral codes
+      tags:
+      - referral
+  /v1/api/auth/refresh:
+    post:
+      consumes:
+      - application/json
+      description: Refresh an expired Firebase token using refresh token
+      parameters:
+      - description: Refresh token data
+        in: body
+        name: refresh_token
+        required: true
+        schema:
+          $ref: '#/definitions/user.RefreshTokenRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.RefreshTokenResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Refresh Firebase token
+      tags:
+      - auth
+  /v1/api/crm/auth/login:
+    post:
+      consumes:
+      - application/json
+      description: Authenticate CRM user with username and password, returns JWT token
+      parameters:
+      - description: CRM login credentials
+        in: body
+        name: login
+        required: true
+        schema:
+          $ref: '#/definitions/crm_user.CRMLoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/crm_user.CRMLoginResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Login with CRM credentials
+      tags:
+      - crm-auth
+  /v1/api/crm/auth/me:
+    get:
+      consumes:
+      - application/json
+      description: Get current authenticated CRM user information from JWT token
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/crm_user.CRMUserResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      security:
+      - BearerAuth: []
+      summary: Get current CRM user information
+      tags:
+      - crm-auth
+  /v1/api/crm/user-limit:
+    put:
+      consumes:
+      - application/json
+      description: Update the user limit configuration (CRM access required)
+      parameters:
+      - description: Updated user limit data
+        in: body
+        name: user_limit
+        required: true
+        schema:
+          $ref: '#/definitions/user_limit.UpdateUserLimitRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user_limit.UpdateUserLimitResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      security:
+      - BearerAuth: []
+      summary: Update user limit
+      tags:
+      - user-limit
+  /v1/api/crm/users:
+    post:
+      consumes:
+      - application/json
+      description: Create a new CRM user with username and password
+      parameters:
+      - description: CRM user data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/crm_user.CreateCRMUserRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/crm_user.CRMUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Create a new CRM user
+      tags:
+      - crm-auth
+  /v1/api/crm/users/total:
+    get:
+      consumes:
+      - application/json
+      description: Get the total count of users in the system (CRM access required)
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.GetTotalUsersResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      security:
+      - BearerAuth: []
+      summary: Get total number of users
+      tags:
+      - users
+  /v1/api/history/sessions:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve all conversation sessions for the authenticated user.
+        Supports sorting by created_at or updated_at in ascending or descending order,
+        and searching by history_name.
+      parameters:
+      - description: 'Sort field: created_at or updated_at (default: updated_at)'
+        in: query
+        name: sort_by
+        type: string
+      - description: 'Sort order: asc or desc (default: desc)'
+        in: query
+        name: sort_order
+        type: string
+      - description: Search query to filter sessions by history_name (partial match)
+        in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/history.GetSessionsResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      security:
+      - BearerAuth: []
+      summary: Get user's conversation sessions
+      tags:
+      - history
+  /v1/api/history/sessions/{session_id}:
+    delete:
+      consumes:
+      - application/json
+      description: Soft delete a conversation session by setting deleted_at timestamp.
+        Validates that the session belongs to the authenticated user.
+      parameters:
+      - description: Session ID (UUID)
+        in: path
+        name: session_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      security:
+      - BearerAuth: []
+      summary: Delete a conversation session
+      tags:
+      - history
+  /v1/api/history/sessions/{session_id}/messages:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve all messages for a specific session. Validates that the
+        session belongs to the authenticated user. Supports sorting by created_at
+        in ascending (chronological) or descending order.
+      parameters:
+      - description: Session ID (UUID)
+        in: path
+        name: session_id
+        required: true
+        type: string
+      - description: 'Sort order: asc or desc (default: asc for chronological)'
+        in: query
+        name: sort_order
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/history.GetMessagesResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      security:
+      - BearerAuth: []
+      summary: Get messages for a session
+      tags:
+      - history
+  /v1/api/referral-codes:
+    get:
+      consumes:
+      - application/json
+      description: Get a paginated list of all general referral codes
+      parameters:
+      - description: 'Number of items to return (default: 10, max: 100)'
+        in: query
+        name: limit
+        type: integer
+      - description: 'Number of items to skip (default: 0)'
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/referral_code.ListReferralCodesResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      security:
+      - BearerAuth: []
+      summary: List all referral codes
+      tags:
+      - referral-codes
+    post:
+      consumes:
+      - application/json
+      description: Create a new general referral code (admin only)
+      parameters:
+      - description: Referral code data
+        in: body
+        name: referral_code
+        required: true
+        schema:
+          $ref: '#/definitions/referral_code.CreateReferralCodeRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/referral_code.ReferralCodeResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      security:
+      - BearerAuth: []
+      summary: Create a new general referral code
+      tags:
+      - referral-codes
+  /v1/api/referral-codes/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a general referral code
+      parameters:
+      - description: Referral Code ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      security:
+      - BearerAuth: []
+      summary: Delete referral code
+      tags:
+      - referral-codes
+    get:
+      consumes:
+      - application/json
+      description: Get a general referral code by its ID
+      parameters:
+      - description: Referral Code ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/referral_code.ReferralCodeResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      security:
+      - BearerAuth: []
+      summary: Get referral code by ID
+      tags:
+      - referral-codes
+    put:
+      consumes:
+      - application/json
+      description: Update a general referral code
+      parameters:
+      - description: Referral Code ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Updated referral code data
+        in: body
+        name: referral_code
+        required: true
+        schema:
+          $ref: '#/definitions/referral_code.UpdateReferralCodeRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/referral_code.ReferralCodeResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      security:
+      - BearerAuth: []
+      summary: Update referral code
+      tags:
+      - referral-codes
+  /v1/api/referral-codes/code/{code}:
+    get:
+      consumes:
+      - application/json
+      description: Get a general referral code by its code value
+      parameters:
+      - description: Referral Code
+        in: path
+        name: code
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/referral_code.ReferralCodeResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      security:
+      - BearerAuth: []
+      summary: Get referral code by code
+      tags:
+      - referral-codes
+  /v1/api/referral-codes/validate/{code}:
+    get:
+      consumes:
+      - application/json
+      description: Check if a referral code is valid
+      parameters:
+      - description: Referral Code
+        in: path
+        name: code
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      security:
+      - BearerAuth: []
+      summary: Validate referral code
+      tags:
+      - referral-codes
+  /v1/api/user-limit:
+    get:
+      consumes:
+      - application/json
+      description: Get the current user limit configuration
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user_limit.GetUserLimitResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Get user limit
+      tags:
+      - user-limit
+  /v1/api/user-limit/check:
+    get:
+      consumes:
+      - application/json
+      description: Check if the total number of users exceeds the configured limit
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user_limit.IsUserOverLimitUsedResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      security:
+      - BearerAuth: []
+      summary: Check if user limit is exceeded
+      tags:
+      - user-limit
+  /v1/api/users:
+    post:
+      consumes:
+      - application/json
+      description: Create a new user with Firebase authentication
+      parameters:
+      - description: User data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/user.CreateUserRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/user.CreateUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Create a new user
+      tags:
+      - users
+  /v1/api/users/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a user
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            $ref: '#/definitions/user.DeleteUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Delete user
+      tags:
+      - users
+    get:
+      consumes:
+      - application/json
+      description: Get user information by user ID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.GetUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Get user by ID
+      tags:
+      - users
+    put:
+      consumes:
+      - application/json
+      description: Update user information
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Updated user data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/user.UpdateUserRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.UpdateUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Update user
+      tags:
+      - users
+  /v1/api/users/{id}/referral/activate:
+    post:
+      consumes:
+      - application/json
+      description: Activate a referral code for a user
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Referral data
+        in: body
+        name: referral
+        required: true
+        schema:
+          $ref: '#/definitions/user.ActivateReferralRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.ActivateReferralResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Activate referral code
+      tags:
+      - users/referral
+  /v1/api/users/{id}/referral/codes:
+    get:
+      consumes:
+      - application/json
+      description: Get all referral codes for a user
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/referral_code.GetUserReferralCodesResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Get user referral codes
+      tags:
+      - users/referral
+  /v1/api/users/auth/google:
+    post:
+      consumes:
+      - application/json
+      description: Authenticate user with Google OAuth
+      parameters:
+      - description: Google auth data
+        in: body
+        name: auth
+        required: true
+        schema:
+          $ref: '#/definitions/user.GoogleLoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.AuthResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Authenticate with Google
+      tags:
+      - users/auth
+  /v1/api/users/auth/refresh:
+    post:
+      consumes:
+      - application/json
+      description: Refresh access token using refresh token
+      parameters:
+      - description: Refresh token
+        in: body
+        name: refresh
+        required: true
+        schema:
+          $ref: '#/definitions/user.RefreshTokenRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.RefreshTokenResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Refresh access token
+      tags:
+      - users/auth
+  /v1/api/users/auth/register:
+    post:
+      consumes:
+      - application/json
+      description: Create a new user with Firebase authentication
+      parameters:
+      - description: User data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/user.CreateUserRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/user.CreateUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Create a new user
+      tags:
+      - users/auth
+  /v1/api/users/profile/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete user by ID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.DeleteUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Delete user
+      tags:
+      - users/profile
+    get:
+      consumes:
+      - application/json
+      description: Get user information by user ID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.GetUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Get user by ID
+      tags:
+      - users/profile
+    put:
+      consumes:
+      - application/json
+      description: Update user information
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: User data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/user.UpdateUserRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.UpdateUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Update user
+      tags:
+      - users/profile
+  /v1/api/users/profile/me:
+    get:
+      consumes:
+      - application/json
+      description: Get current authenticated user information
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.GetUserResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      security:
+      - BearerAuth: []
+      summary: Get current user
+      tags:
+      - users/profile
+  /v1/api/waiting-list/check:
+    post:
+      consumes:
+      - application/json
+      description: Check if an email exists in the waiting list
+      parameters:
+      - description: Check waiting list request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/waiting_list.CheckWaitingListRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/waiting_list.IsInWaitingListResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Check if email is in waiting list
+      tags:
+      - waiting_list
+  /v1/api/waiting-list/join:
+    post:
+      consumes:
+      - application/json
+      description: Add user to the waiting list by email
+      parameters:
+      - description: Join waiting list request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/waiting_list.JoinWaitingListRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/waiting_list.JoinWaitingListResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/shared.ResponseBody'
+      summary: Join waiting list
+      tags:
+      - waiting_list
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

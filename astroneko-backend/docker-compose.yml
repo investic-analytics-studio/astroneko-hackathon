@@ -1,0 +1,33 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:8000"
+    environment:
+      - APP_ENV=local
+    depends_on:
+      - postgres
+    networks:
+      - astroneko-network
+
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: data_source
+      POSTGRES_USER: thanatorn.k
+      POSTGRES_PASSWORD: VUKhm9UPHnExgX
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - astroneko-network
+
+volumes:
+  postgres_data:
+
+networks:
+  astroneko-network:
+    driver: bridge
